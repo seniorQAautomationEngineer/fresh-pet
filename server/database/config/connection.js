@@ -1,6 +1,6 @@
 
   const { Pool } = require("pg");
-    const { NODE_ENV, DATABASE_URL, DEV_DATABASE_URL, TEST_DATABASE_URL} = process.env;
+    const { NODE_ENV, DATABASE_URL, DEV_DATABASE_URL, TEST_DATABASE_URL, TEST_CLOUD_DATABASE_URL} = process.env;
     let URL;
     let SSL;
     
@@ -13,7 +13,7 @@
         URL = DATABASE_URL;
         SSL = { rejectUnauthorized: false };
         break;
-        case "test":
+      case "test":
         URL = TEST_DATABASE_URL;
         SSL = false;
         break;
