@@ -17,6 +17,10 @@
         URL = TEST_DATABASE_URL;
         SSL = false;
         break;
+      case "aws":
+        URL = TEST_CLOUD_DATABASE_URL;
+        SSL = false;
+        break;
       default:
         throw new Error("NODE_ENV is not set");
     }

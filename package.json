@@ -11,9 +11,11 @@
   "scripts": {
     "start": "NODE_ENV=production node server/server.js",
     "dev": "cross-env NODE_ENV=development nodemon server/server.js",
+    "cloud": "cross-env NODE_ENV=aws nodemon server/server.js",
     "dev:client": "cd client && yarn start",
     "build-db": "cross-env NODE_ENV=production node server/database/config/build.js",
     "build-db:dev": "cross-env NODE_ENV=development node server/database/config/build.js",
+    "build-db:cloud": "cross-env NODE_ENV=aws node server/database/config/build.js",
     "test": "jest",
     "heroku-postbuild": "cd client && yarn install --ignore-engines && yarn run build"
   },
