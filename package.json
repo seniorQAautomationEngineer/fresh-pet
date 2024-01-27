@@ -31,6 +31,8 @@
     "pg": "^8.7.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.1",
+    "@types/node": "^20.11.7",
     "eslint": "^8.13.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-node": "^4.1.0",
