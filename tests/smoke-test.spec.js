@@ -1,12 +1,10 @@
 // @ts-check
 const { test, expect } = require('@playwright/test');
 
-test.beforeEach(async ({ page }) => {
-  await page.goto('http://localhost:3000/');
-});
-
 test.describe('Smoke test', () => {
     test('Home page smoke test', async ({ page }) => {
+        await page.goto('/');
+        page.on('domcontentloaded', () => {});
 
         // Validate title
         await expect(page).toHaveTitle(/Fresh Pets/);
