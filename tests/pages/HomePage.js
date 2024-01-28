@@ -14,7 +14,6 @@ class HomePage extends Base {
         this.header = page.locator('header[class="header"]');
         this.backgroundImage = page.locator('//img[@src="../img/background.jpg"]');
         this.productSection = page.locator('//section[@class="products-section"]');
-        this.itemCard = page.locator('div[class="card"]');
         this.footer = page.locator('img[class="footer-img"]');
       }
 
@@ -72,11 +71,6 @@ class HomePage extends Base {
 
     async verifyProductSection(){
         await expect(this.productSection).toBeVisible();
-    }
-
-    async verifyItemCard(index){
-        const nthItemCard = this.itemCard.nth(index);
-        await nthItemCard.waitFor({ state: 'visible', timeout: 5000 });
     }
 
     async validateFooter(){

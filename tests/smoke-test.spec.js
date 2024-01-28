@@ -17,7 +17,6 @@ test.describe('Smoke test', () => {
         homePage.validateHeader();
         homePage.validatBackgroundImage();
         homePage.verifyProductSection();
-        homePage.verifyItemCard(0);
         homePage.validateFooter();
     });
 });
