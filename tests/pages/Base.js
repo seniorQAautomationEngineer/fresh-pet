@@ -1,3 +1,5 @@
+const { expect } = require('@playwright/test');
+
 class Base{
 
     constructor(page) {
@@ -11,9 +13,15 @@ async scrollAndClickElement(element) {
     }
   }
 
-async clickElementByIndex(element, index) {
-    scrollAndClickElement(element.nth(index));
-  }
+  async scrollAndClickElementAtIndex(element, index) {
+    const nthElement = await element.nth(index);
+    await nthElement.scrollIntoViewIfNeeded();
+    await nthElement.click();
+}
+
+async validateToastMessage(text) {
+    await expect(this.page.locator('//div[@role="alert"]//div[contains(text(), "' + text + '")]')).toBeVisible();
+}
 }
 
 export default Base;
