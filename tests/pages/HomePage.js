@@ -11,6 +11,11 @@ class HomePage extends Base {
         this.buttonSignOut = page.locator('div[class="icons-logout"]');
         this.textFieldUsername = page.locator('input#username');
         this.buttonSubmit = page.locator('//button[text()="Submit"]');
+        this.header = page.locator('header[class="header"]');
+        this.backgroundImage = page.locator('//img[@src="../img/background.jpg"]');
+        this.productSection = page.locator('//section[@class="products-section"]');
+        this.itemCard = page.locator('div[class="card"]');
+        this.footer = page.locator('img[class="footer-img"]');
       }
 
     async clickAnyCategory(category){
@@ -45,6 +50,37 @@ class HomePage extends Base {
     async verifyUsername(username){
         const buttonText = await this.buttonSignIn.textContent();
         expect(buttonText).toBe(username);
+    }
+
+    async validatePageTitle(titleString) {
+        const expectedTitlePattern = new RegExp(titleString);
+        await expect(this.page).toHaveTitle(expectedTitlePattern);
+    }
+
+    async validateLogo() {
+        const imageSrc = await this.page.getAttribute('img', 'src');
+        expect(imageSrc).toBe('../img/logo.png');
+    }
+
+    async validateHeader(){
+        await expect(this.header).toBeVisible();
+    }
+
+    async validatBackgroundImage(){
+        await expect(this.backgroundImage).toBeVisible();
+    }
+
+    async verifyProductSection(){
+        await expect(this.productSection).toBeVisible();
+    }
+
+    async verifyItemCard(index){
+        const nthItemCard = this.itemCard.nth(index);
+        await nthItemCard.waitFor({ state: 'visible', timeout: 5000 });
+    }
+
+    async validateFooter(){
+        await expect(this.footer).toBeVisible();
     }
 
 }
