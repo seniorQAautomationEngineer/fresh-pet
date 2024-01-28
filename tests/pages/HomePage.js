@@ -7,6 +7,10 @@ class HomePage extends Base {
         super(page);
         this.buttonAddToCart = page.locator('//button[@class="add-to-cart"]');
         this.buttonShoppingCart = page.locator('//a[@href="/cart"]');
+        this.buttonSignIn = page.locator('button[class="signin-btn"]');
+        this.buttonSignOut = page.locator('div[class="icons-logout"]');
+        this.textFieldUsername = page.locator('input#username');
+        this.buttonSubmit = page.locator('//button[text()="Submit"]');
       }
 
     async clickAnyCategory(category){
@@ -23,6 +27,24 @@ class HomePage extends Base {
 
     async clickShoppingCartButton(){
         await this.scrollAndClickElement(this.buttonShoppingCart);
+    }
+
+    async clickSignInButton(){
+        await this.buttonSignIn.click();
+    }
+
+    async clickSignOutButton(){
+        await this.buttonSignOut.click();
+    }
+
+    async completeSignInForm(username){
+        await this.textFieldUsername.fill(username);
+        await this.buttonSubmit.click();
+    }
+
+    async verifyUsername(username){
+        const buttonText = await this.buttonSignIn.textContent();
+        expect(buttonText).toBe(username);
     }
 
 }
